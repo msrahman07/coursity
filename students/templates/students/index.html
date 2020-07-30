@@ -1,0 +1,29 @@
+{% include "header.html" %}
+{% load static %}
+<div class="container">
+    <h1>Welcome to students index page asdasd</h1>
+
+    <div class="row">
+        {% if students %}
+            {% for student in students %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title"><a href="">{{ student.name }}</a></h4>
+                            <div>
+                                email: {{student.email}}
+                            </div>
+                            <div>
+                                StudentId: {{student.empId}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+        
+    </div>
+</div>
+
+
+
