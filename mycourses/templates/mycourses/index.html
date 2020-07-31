@@ -12,6 +12,9 @@
                             <div class="card-subtitle">
                                 {{ course.name }}
                             </div> <br>
+                            <div>
+                                <a href=" {% url 'mycourses:discussion' course.id %}">view discussion board</a>
+                            </div>
                             <div class="badge badge-success">Enrolled</div>
                         </div>
                     </div>

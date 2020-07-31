@@ -1,0 +1,34 @@
+{% include 'header.html' %}
+<h1>This disscussion page</h1>
+<div class="container">
+    <form action="{% url 'mycourses:discussion' course.id%}" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <!-- <label for="topic" id="topic"></label> -->
+            <input class="form-control" id="topic" type="text" name="topic" placeholder="new topic">
+        </div>
+        <div class="form-group">
+            <!-- <label for="text" id="text"></label> -->
+            <textarea class="form-control" id="text" name="text" rows="3" placeholder="discussion text"></textarea>
+        </div>
+        <div class="float-right">
+            <button type="submit" class="btn btn-success">Add to discussion</button>
+        </div>
+    </form>
+    <br>
+    <hr>
+    {% if discussions %}
+        {% for disc in discussions %}
+            <div>
+                <h3><a href="{% url 'mycourses:discussion_detail' disc.course.id disc.id %}">{{ disc.topic }}</a></h3>
+                <span class="float-left"> published on: {{disc.pub_date}}</span>
+                <span class="float-right"> by {{disc.user}}</span>
+                <br>
+            </div>
+            <hr>
+        {% endfor %}
+    {% endif %}
+    
+</div>
+
+{% include 'footer.html' %}

@@ -1,0 +1,13 @@
+{% include 'header.html' %}
+<div class="container">
+    <br>
+    <h3>{{disc.topic}}</h3>
+    <p>{{disc.text}}</p>
+    <a href="../">go back</a>
+    <hr>
+    <form action="{% url 'mycourses:discussion_detail' disc.course.id disc.id %}" method="POST">
+        {% csrf_token %}
+        <button class="btn btn-danger">Delete</button>
+    </form>
+</div>
+{% include 'footer.html' %}
