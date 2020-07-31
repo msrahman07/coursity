@@ -1,0 +1,28 @@
+{% include "header.html" %}
+
+{% load static %}
+<div class="container">
+    <h1>This is courses page</h1>
+    <div class="row">
+        {% if courses %}
+            {% for course in courses %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title"><a href="">{{ course.code }}</a></h4>
+                            <div class="card-subtitle">
+                               {{ course.name }}
+                            </div>
+                            <form action="">
+                                <input class="btn btn-sm btn-primary float-right" type="submit" value="enroll">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+        
+    </div>
+</div>
+
+{% include 'footer.html' %}
