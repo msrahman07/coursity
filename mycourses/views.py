@@ -36,7 +36,7 @@ def discussion(request, course_id):
 @login_required
 def discussion_detail(request,course_id, disc_id):
     disc = get_object_or_404(Discussion, id=disc_id)
-    if(request.method=='POST'):
+    if(request.method=='POST' and request.user == disc.user):
         disc.delete()
         return discussion(request, course_id)
     else:

@@ -5,9 +5,12 @@
     <p>{{disc.text}}</p>
     <a href="../">go back</a>
     <hr>
+    {% if user.is_authenticated and disc.user == user %}
     <form action="{% url 'mycourses:discussion_detail' disc.course.id disc.id %}" method="POST">
         {% csrf_token %}
         <button class="btn btn-danger">Delete</button>
     </form>
+    {% endif %}
+    
 </div>
 {% include 'footer.html' %}
