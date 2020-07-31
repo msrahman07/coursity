@@ -1,0 +1,25 @@
+{% include "header.html" %}
+<div class="container">
+    {% if courses %}
+        <br><h3>You are enrolled in:</h3>
+    
+        <div class="row">
+            {% for course in courses %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title"><a href="">{{ course.code }}</a></h4>
+                            <div class="card-subtitle">
+                                {{ course.name }}
+                            </div> <br>
+                            <div class="badge badge-success">Enrolled</div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+    {% else %}
+        <h4>There are no courses. <a href="{% url 'courses:index' %}">Click here</a> to enroll</h4>    
+        </div>
+    {% endif %}
+</div>
+{% include "footer.html" %}

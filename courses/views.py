@@ -22,7 +22,7 @@ def enroll(request, course_id):
     if(course not in request.user.course_set.all()):
         course.users.add(request.user)
         course.save()
-        success_msg = "Enrolled"+course.name+"successfully!!"
+        success_msg = "Enrolled in "+course.name+" successfully!!"
     else:
         success_msg = "Course already enrolled"
 

@@ -1,5 +1,5 @@
 {% include 'header.html' %}
-<div class="container text-center" style="width: 50%; margin: 5% auto;">
+<div class="container text-center" style="width: 25rem; margin: 5% auto;">
     <h1>Sign Up</h1>
     {% if msg %}
         <div class="alert alert-warning" role="alert">
@@ -27,6 +27,8 @@
         <div class="form-group">
             <button class="btn btn-primary form-control" type="submit">signup</button>
         </div>
+        <a class="btn btn-info float-left" href="{% url 'login' %}">Click here to Sign up</a>
+
     </form>
 </div>
 {% include 'footer.html' %}
