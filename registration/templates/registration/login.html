@@ -1,0 +1,30 @@
+{% include "header.html" %}
+{% load static %}
+
+<div class="container text-center" style="width: 50%; margin: 5% auto;">
+    <h1>Login</h1>
+    {% if form.errors %}
+        <div class="alert alert-warning" role="alert">
+            Incorrect username or password
+        </div>
+    {% endif %}
+    {% if next %}
+        <div class="alert alert-warning" role="alert">
+            Login First
+        </div>
+    {% endif %}
+    <form action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <input class="form-control" type="text" name="username" placeholder="username">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="password" name="password" placeholder="password">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary form-control" type="submit">Login</button>                    
+        </div>
+    </form>
+</div>
+
+{% include "footer.html" %}

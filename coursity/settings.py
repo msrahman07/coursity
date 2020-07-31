@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'registration.apps.RegistrationConfig',
     'courses.apps.CoursesConfig',
     'students.apps.StudentsConfig',
     'django.contrib.admin',
@@ -126,3 +127,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_REDIRECT_URL = '/courses/'
+LOGOUT_REDIRECT_URL = '/courses/'
