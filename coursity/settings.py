@@ -85,8 +85,9 @@ DATABASES = {
     # }
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'coursity_db',
-        'HOST': 'mongodb://localhost/coursity_db',
+        'NAME': 'Cluster0',
+        'HOST': 'mongodb+srv://admin:admin123@cluster0.rcxda.mongodb.net/Cluster0?retryWrites=true&w=majority'
+        # 'HOST': 'mongodb://localhost/coursity_db',
     }
 }
 
