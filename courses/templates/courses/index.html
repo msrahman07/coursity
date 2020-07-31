@@ -2,6 +2,11 @@
 
 {% load static %}
 <div class="container">
+    {% if success_msg %}
+        <div class="alert alert-success" role="alert">
+            {{success_msg}}
+        </div>
+    {% endif %}
     <h1>This is courses page</h1>
     <div class="row">
         {% if courses %}
@@ -12,10 +17,15 @@
                             <h4 class="card-title"><a href="">{{ course.code }}</a></h4>
                             <div class="card-subtitle">
                                {{ course.name }}
-                            </div>
-                            <form action="">
-                                <input class="btn btn-sm btn-primary float-right" type="submit" value="enroll">
-                            </form>
+                            </div> <br>
+                            {% if not user.is_authenticated or course not in user.course_set.all %}
+                                <form action="{% url 'courses:enroll' course.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <input class="btn btn-sm btn-primary float-right" type="submit" value="enroll">
+                                </form>
+                            {% else %}
+                                <div class="badge badge-success">Enrolled</div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
