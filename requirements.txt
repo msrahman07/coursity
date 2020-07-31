@@ -68,7 +68,7 @@ hyperlink==19.0.0
 idna==2.8
 imageio==2.5.0
 imagesize==1.1.0
-importlib-metadata==0.0.0
+importlib-metadata>=0.5
 incremental==17.5.0
 ipykernel==5.1.0
 ipython==7.4.0
@@ -157,7 +157,6 @@ PyJWT==1.7.1
 pykalman==0.9.5
 pylint==2.3.1
 pymongo==3.10.1
-pyodbc==4.0.26
 pyOpenSSL==19.0.0
 pyparsing==2.3.1
 pyquery==1.4.1
