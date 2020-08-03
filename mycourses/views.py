@@ -46,9 +46,10 @@ def discussion_detail(request,course_id, disc_id):
 
 @login_required
 def course_withdraw(request, course_id):
-    course = get_object_or_404(Course, id=course_id)
-    if(request.user.is_authenticated and course in request.user.course_set.all()):
-        course.users.remove(request.user)
-    course.save()
+    if(request.method == 'POST'):
+        course = get_object_or_404(Course, id=course_id)
+        if(request.user.is_authenticated and course in request.user.course_set.all()):
+            course.users.remove(request.user)
+        course.save()
     next = request.POST.get('next','/mycourses')
     return HttpResponseRedirect(next)
