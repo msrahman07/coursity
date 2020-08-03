@@ -17,14 +17,16 @@ def index(request, newContext={}):
 
 @login_required
 def enroll(request, course_id):
-    course = Course.objects.get(id=course_id)
-    print(request.user)
-    if(course not in request.user.course_set.all()):
-        course.users.add(request.user)
-        course.save()
-        success_msg = "Enrolled in "+course.name+" successfully!!"
-    else:
-        success_msg = "Course already enrolled"
+    success_msg = ""
+    if(request.method == 'POST'):
+        course = Course.objects.get(id=course_id)
+        print(request.user)
+        if(course not in request.user.course_set.all()):
+            course.users.add(request.user)
+            course.save()
+            success_msg = "Enrolled in "+course.name+" successfully!!"
+        else:
+            success_msg = "Course already enrolled"
 
     return index(request, {'success_msg':success_msg})
     # if(request.user.is_authenticated):
