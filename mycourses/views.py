@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse, HttpResponseRedirect
 from courses.models import Course
 from .models import Discussion
 from .forms import DiscussionForm
@@ -41,3 +42,13 @@ def discussion_detail(request,course_id, disc_id):
         return discussion(request, course_id)
     else:
         return render(request, 'mycourses/discussion_detail.html', {'disc':disc})
+
+
+@login_required
+def course_withdraw(request, course_id):
+    course = get_object_or_404(Course, id=course_id)
+    if(request.user.is_authenticated and course in request.user.course_set.all()):
+        course.users.remove(request.user)
+    course.save()
+    next = request.POST.get('next','/mycourses')
+    return HttpResponseRedirect(next)
